@@ -38,7 +38,7 @@ export const Header = () => {
   return (
     <header
       ref={header}
-      className=" mix-blend-exclusion flex justify-between items-center h-[58px] my-4 md:my-[45px] px-10 md:px-[150px] w-screen z-30 fixed"
+      className="mix-blend-exclusion flex justify-between items-center h-[58px] my-4 md:my-[45px] px-10 md:px-[150px] w-screen z-30 fixed"
     >
       <Link href="/">
         <div className="md:w-[515px] md:text-4xl text-2xl items-baseline font-graphik font-extralight ">
