@@ -3,7 +3,6 @@
 import PROJECTS from "@/utils/PROJECTS";
 import gsap from "gsap";
 import { useLayoutEffect, useRef } from "react";
-import styled from "styled-components";
 import { ProjectCard } from "../project-card";
 
 export const Gallery = () => {
@@ -113,29 +112,12 @@ export const Gallery = () => {
         })}
       </div>
 
-      <SeeMoreButton ref={button} className="font-graphik">
+      <div
+        ref={button}
+        className="@apply pointer-events-none fixed -translate-x-2/4 -translate-y-2/4 justify-center items-center w-[120px] h-[120px] hidden rounded-[50%] border-[1.5px] border-solid border-[white] left-2/4 top-2/4 font-graphik focus:outline-0"
+      >
         <div ref={buttonText}>More</div>
-      </SeeMoreButton>
+      </div>
     </div>
   );
 };
-
-const SeeMoreButton = styled.div`
-  pointer-events: none;
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  justify-content: center;
-  align-items: center;
-  width: 120px;
-  height: 120px;
-  border-radius: 50%;
-  background: transparent;
-  display: none;
-  border: 1.5px solid white;
-
-  &:focus {
-    outline: none;
-  }
-`;
