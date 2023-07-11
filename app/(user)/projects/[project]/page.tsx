@@ -1,10 +1,14 @@
 import { Header } from "@/shared/header";
-import { Projects } from "@/shared/projects";
+import { Project } from "@/shared/project";
 
-export default async function Home() {
+export default async function Home({
+  params,
+}: {
+  params: { project: string };
+}) {
   return (
     <div>
-      <Projects />
+      <Project slug={params.project} />
     </div>
   );
 }
