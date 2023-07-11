@@ -9,7 +9,7 @@ export const Projects = () => {
   const timeline = gsap.timeline();
   return (
     <div className="w-screen bg-black overflow-hidden">
-      <Header />
+      {/* <Header /> */}
       <Hero timeline={timeline} />
       <Gallery />
     </div>

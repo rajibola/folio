@@ -114,7 +114,7 @@ export const Gallery = () => {
 
       <div
         ref={button}
-        className="@apply pointer-events-none fixed -translate-x-2/4 -translate-y-2/4 justify-center items-center w-[120px] h-[120px] hidden rounded-[50%] border-[1.5px] border-solid border-[white] left-2/4 top-2/4 font-graphik focus:outline-0"
+        className="pointer-events-none fixed -translate-x-2/4 -translate-y-2/4 justify-center items-center w-[120px] h-[120px] hidden rounded-[50%] border-[1.5px] border-solid border-[white] left-2/4 top-2/4 font-graphik focus:outline-0"
       >
         <div ref={buttonText}>More</div>
       </div>
