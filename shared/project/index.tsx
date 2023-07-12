@@ -6,6 +6,7 @@ import { Hero } from "./hero";
 import { Info } from "./info";
 import { NextProject } from "./next-project";
 import { LargeImage } from "./large-image";
+import { Showcase } from "./showcase";
 
 export const Project = ({ slug }: { slug: string }) => {
   const preview = gsap.timeline();
@@ -19,7 +20,7 @@ export const Project = ({ slug }: { slug: string }) => {
       <LargeImage
         image={project?.images[3] ? project?.images[3] : project?.images[1]}
       />
-      {/* <Showcase images={project?.images} tag={project?.tag} /> */}
+      <Showcase images={project?.images} tag={project?.tag} />
       <NextProject project={nextProject} />
     </div>
   );

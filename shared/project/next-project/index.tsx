@@ -50,7 +50,7 @@ export const NextProject: FC<{ project: (typeof PROJECTS)[0] }> = ({
           ref={nextImge}
           className="block h-[125%] width-[100%] absolute -top-[70%] will-change-transform object-cover opacity-90"
           sizes="(max-width: 768px) 100vw"
-          height={700}
+          height={900}
           width={1500}
           alt="next project"
         />
