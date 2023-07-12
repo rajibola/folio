@@ -1,8 +1,9 @@
-export function getProject(name: string) {
+export const getProject = (name: string) => {
   return PROJECTS.find(
     (project) => project?.name.split(" ").join("-").toLocaleLowerCase() === name
   );
-}
+};
+
 export function getNextProject(name: string) {
   const currentIndex = PROJECTS.findIndex(
     (project) => project?.name.split(" ").join("-").toLocaleLowerCase() === name

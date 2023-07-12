@@ -15,7 +15,6 @@ export const revalidate = 30;
 
 export default async function Home() {
   const posts = await client.fetch(query);
-  console.log(posts);
   return (
     <div>
       <Header />
