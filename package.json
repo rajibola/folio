@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@emailjs/browser": "^3.4.0",
+    "@heroicons/react": "^2.0.18",
     "@portabletext/react": "^3.0.4",
     "@react-spring/three": "^9.7.3",
     "@react-three/drei": "^9.77.10",
@@ -22,6 +23,7 @@
     "autoprefixer": "10.4.14",
     "eslint": "8.44.0",
     "eslint-config-next": "13.4.7",
+    "framer-motion": "^10.12.20",
     "gsap": "^3.12.2",
     "next": "13.4.7",
     "next-sanity": "^5.1.0",
