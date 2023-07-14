@@ -10,16 +10,17 @@ interface Props {
 
 export const BlogList = ({ posts }: Props) => {
   return (
-    <section>
+    <section className="">
       <Hero />
-      <div className="flex w-[calc(100%-3rem)] max-w-[90ch] mx-auto justify-center gap-10">
+      <div className="flex flex-wrap w-[calc(100%-3rem)] max-w-[90ch] mx-auto justify-center gap-10">
         {posts.map((post) => {
-          const { author, mainImage, title, slug } = post;
+          const { author, mainImage, title, slug, categories } = post;
           return (
             <PostCard
               author={post.author}
               imageUrl={post.mainImage}
               title={title}
+              categories={categories}
               link={slug.current}
               key={post._id}
             />
