@@ -1,7 +1,6 @@
 import { client } from "@/sanity/lib/client";
+import { Post as PostPage } from "@/shared/post";
 import { groq } from "next-sanity";
-import { PortableText } from "@portabletext/react";
-import { RichTextComponents } from "@/shared/rich-text-component";
 
 interface Props {
   params: {
@@ -37,8 +36,7 @@ async function Post({ params: { slug } }: Props) {
   const post: Post = await client.fetch(query, { slug });
   return (
     <div>
-      <div>Post {slug}</div>
-      <PortableText value={post.body} components={RichTextComponents} />
+      <PostPage post={post} />
     </div>
   );
 }

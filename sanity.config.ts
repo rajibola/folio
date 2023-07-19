@@ -5,6 +5,7 @@
 import { visionTool } from "@sanity/vision";
 import { defineConfig } from "sanity";
 import { deskTool } from "sanity/desk";
+import { codeInput } from "@sanity/code-input";
 
 // Go to https://www.sanity.io/docs/api-versioning to learn how API versioning works
 import { apiVersion, dataset, projectId } from "./sanity/env";
@@ -17,5 +18,9 @@ export default defineConfig({
   name: "Folio_Content_Studio",
   title: "Folio Content Studio",
   schema,
-  plugins: [deskTool(), visionTool({ defaultApiVersion: apiVersion })],
+  plugins: [
+    deskTool(),
+    visionTool({ defaultApiVersion: apiVersion }),
+    codeInput(),
+  ],
 });
