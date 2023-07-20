@@ -29,11 +29,12 @@ async function Post({ params: { slug } }: Props) {
     *[_type=='post' && slug.current== $slug][0]{
         ...,
         author->,
-        categories->
+        categories[]->,
     }
     `;
 
   const post: Post = await client.fetch(query, { slug });
+
   return (
     <div>
       <PostPage post={post} />

@@ -49,22 +49,16 @@ export const RichTextComponents: RichTextComponentsType = {
   },
   block: {
     h1: ({ children }: any) => (
-      <h1 className="text-5xl my-0 font-bold">{children}</h1>
+      <h1 className="text-5xl  my-0 font-bold">{children}</h1>
     ),
     h2: ({ children }: any) => (
-      <h2 className="text-4xl my-0 font-bold">{children}</h2>
+      <h2 className="text-4xl  my-0 font-bold">{children}</h2>
     ),
     h3: ({ children }: any) => (
-      <h3 className="text-3xl my-0 font-bold">{children}</h3>
+      <h3 className="text-3xl  my-0 font-bold">{children}</h3>
     ),
     h4: ({ children }: any) => (
-      <h4 className="text-2xl my-0 font-bold">{children}</h4>
-    ),
-
-    blockquote: ({ children }: any) => (
-      <blockquote className="border-l-[#8F00FF] border-l-4 pl-5 py-5 my-5">
-        {children}
-      </blockquote>
+      <h4 className="text-2xl  my-0 font-bold">{children}</h4>
     ),
   },
   marks: {

@@ -2,17 +2,16 @@ import { Article } from "./article";
 import { Hero } from "./hero";
 
 export const Post = ({ post }: { post: Post }) => {
-  // const { title, mainImage, _updatedAt, author, categories } = post;
-  if (!post) return;
+  const { title, mainImage, _updatedAt, author, categories } = post;
 
   return (
     <div className="bg-white">
       <Hero
-        title={post.title}
-        date={post._updatedAt}
-        thumbnail={post.mainImage}
-        author={post.author.name}
-        categories={post.categories}
+        title={title}
+        date={_updatedAt}
+        thumbnail={mainImage}
+        author={author.name}
+        categories={categories}
       />
       <Article body={post.body} />
     </div>

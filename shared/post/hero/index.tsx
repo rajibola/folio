@@ -1,8 +1,10 @@
+import { client } from "@/sanity/lib/client";
 import { urlForImage } from "@/sanity/lib/image";
 import { CalendarIcon, ClockIcon } from "@heroicons/react/24/outline";
+import { groq } from "next-sanity";
 import Image from "next/image";
 
-export const Hero = ({
+export const Hero = async ({
   title,
   date,
   thumbnail,
@@ -16,19 +18,21 @@ export const Hero = ({
   categories: Category[];
 }) => {
   return (
-    <div className="bg-white">
+    <div className="bg-white mx-auto mb-10">
       <div className="relative">
         <div className="absolute w-full h-full bg-gradient-to-t from-slate-900" />
         <div className="bg-black/30 absolute w-full h-full flex items-end pb-10 font-graphik">
           <div className="w-[calc(100%-3rem)] max-w-[70ch] mx-auto">
-            {categories?.map((item, i) => (
-              <div
-                key={i}
-                className="px-2 py-[4px] bg-white/20 backdrop-blur-md rounded-lg text-white uppercase text-[10px] font-semibold tracking-wide"
-              >
-                {item.title}
-              </div>
-            ))}
+            <div className="flex gap-2">
+              {categories.map((item, i) => (
+                <div
+                  key={i}
+                  className="px-2 py-[4px] bg-white/20 backdrop-blur-md rounded-lg text-white uppercase text-[10px] font-semibold tracking-wide"
+                >
+                  {item.title}
+                </div>
+              ))}
+            </div>
             <h1 className="text-white text-6xl font-bold leading-tight mb-5">
               {title}
             </h1>
