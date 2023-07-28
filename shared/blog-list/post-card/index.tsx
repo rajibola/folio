@@ -1,8 +1,8 @@
 import { urlForImage } from "@/sanity/lib/image";
 import { ClientSideRoute } from "@/shared/client-side-route";
+import { CalendarIcon } from "@heroicons/react/24/solid";
+import { Dosis, Roboto } from "next/font/google";
 import Image from "next/image";
-import { CalendarIcon, ClockIcon } from "@heroicons/react/24/solid";
-import { Roboto, Dosis } from "next/font/google";
 
 const roboto = Roboto({ weight: ["100", "300", "500"], subsets: ["cyrillic"] });
 const dosis = Dosis({ weight: ["400"], subsets: ["latin"] });
@@ -29,7 +29,7 @@ export const PostCard = ({
         className="rounded-2xl overflow-hidden bg-white/5 relative group h-[520px] w-[400px]"
       >
         <div className="w-full h-[350px] relative transition-all duration-300 transform group-hover:h-[400px] z-10">
-          <div className="absolute w-14 h-14 grid place-items-center right-7 -bottom-[28px] rounded-full transition-all duration-300 transform scale-100 group-hover:scale-75">
+          <div className="absolute w-14 h-14 grid place-items-center right-7 -bottom-[28px] rounded-full transition-all duration-300 transform scale-100 group-hover:scale-75 origin-right">
             <Image
               className="rounded-full w-12 h-12"
               src={urlForImage(author.image as any).url()}

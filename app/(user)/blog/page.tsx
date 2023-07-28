@@ -1,6 +1,5 @@
 import { client } from "@/sanity/lib/client";
 import { BlogList } from "@/shared/blog-list";
-import { PageTransition } from "@/shared/page-transition";
 import { groq } from "next-sanity";
 
 const query = groq`
@@ -17,7 +16,6 @@ export default async function Home() {
   const posts = await client.fetch(query);
   return (
     <div>
-      <PageTransition />
       <BlogList posts={posts} />
     </div>
   );

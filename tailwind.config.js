@@ -16,6 +16,9 @@ module.exports = {
       fontSize: {
         "fs-1": "clamp(1.35rem, calc(1.3rem + 0.26vw), 1.5rem)",
       },
+      transitionTimingFunction: {
+        custom: "cubic-bezier(0.76, 0, 0.24, 1)",
+      },
     },
   },
   plugins: [],
