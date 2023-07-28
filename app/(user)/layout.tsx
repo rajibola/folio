@@ -1,8 +1,7 @@
 import { Header } from "@/shared/header";
-import "../globals.css";
-import { Inter } from "next/font/google";
-import { PageTransition } from "@/shared/page-transition";
 import { LocomotiveScroller } from "@/shared/locomotive-scroller";
+import { Inter } from "next/font/google";
+import "../globals.css";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -20,7 +19,6 @@ export default function RootLayout({
     <html lang="en">
       <body className={inter.className}>
         <LocomotiveScroller />
-        <PageTransition />
         <Header />
         {children}
       </body>

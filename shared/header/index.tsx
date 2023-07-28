@@ -1,99 +1,80 @@
 "use client";
+import { AnimatePresence, motion } from "framer-motion";
+import { useEffect, useState } from "react";
+import { Roboto, Dosis } from "next/font/google";
+import styled, { css } from "styled-components";
+import { Sidebar } from "./sidebar";
 
-import Link from "next/link";
-import { useEffect, useRef } from "react";
-import { Bounce, gsap, Power2 } from "gsap";
+const roboto = Roboto({ weight: ["100", "300", "500"], subsets: ["cyrillic"] });
+const dosis = Dosis({ weight: ["400"], subsets: ["latin"] });
+
+const data = [0, 3, 5, 7, 9, ""];
+const data2 = [2, 4, 6, 8, 9, ""];
 
 export const Header = () => {
-  let header = useRef(null);
-  let letterI = useRef<HTMLDivElement>(null);
-  let menu = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    let dot = letterI.current?.firstChild!;
-    gsap.from(dot, {
-      delay: 1,
-      top: "-70px",
-      duration: 1,
-      ease: Bounce.easeOut,
-    });
-  }, []);
-
-  const handleMenu = () => {
-    gsap.timeline().to(menu.current, {
-      duration: 0.5,
-      ease: Power2.easeInOut,
-      marginLeft: "0",
-    });
-  };
-
-  const handleCloseMenu = () => {
-    gsap.timeline().to(menu.current, {
-      duration: 0.5,
-      ease: Power2.easeInOut,
-      marginLeft: "100vw",
-    });
-  };
+  const [isMenuOpen, setMenuOpen] = useState(false);
 
   return (
-    <header
-      ref={header}
-      className="mix-blend-exclusion flex justify-between items-center h-[58px] my-4 md:my-[45px] px-10 md:px-[150px] w-screen z-10 fixed"
-    >
-      <Link href="/">
-        <div className="md:w-[515px] md:text-4xl text-2xl items-baseline font-graphik font-extralight ">
-          <div className="flex items-center ">
-            r
-            <div
-              ref={letterI}
-              className="flex flex-col items-center justify-end relative -mb-1 px-[3px]"
-            >
-              <div className="md:h-[5.5px] h-1 w-1 md:w-[5.5px] rounded-xl bg-white absolute -top-2" />
-              <div className="w-[1px] md:h-[20px] h-[11px] text-4xl bg-white" />
-            </div>
-            dwan
-          </div>
-          <p className="font-sourceSansPro leading-[0.5] tracking-tight font-normal md:text-sm text-xs">
-            ui developer
-          </p>
-        </div>
-      </Link>
-      <div className="hidden md:flex md:w-[515px] justify-end md:mr-[52px] text-sm gap-8 font-sourceSansPro lg:self-start mt-3">
-        <Link href="/projects">
-          <h1 className="uppercase text-11 font-graphik tracking-2 mix-blend-difference">
-            works
-          </h1>
-        </Link>
-        <Link href="/contact">
-          <h1 className="uppercase text-11 font-graphik tracking-2">contact</h1>
-        </Link>
-      </div>
-      <div onClick={handleMenu} className="grid gap-[6px] md:hidden">
-        <div className="w-8 h-[2px] bg-white rounded" />
-        <div className="w-6 h-[2px] bg-white rounded" />
-      </div>
-      <div
-        ref={menu}
-        className="w-screen h-[100%] bg-slate-100 fixed z-50 left-0 bottom-0 ml-[100vw] flex flex-col items-center justify-center gap-10"
+    <header>
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 0 }}
+        transition={{ duration: 1, ease: "easeInOut", delay: 3.5 }}
+        className="absolute top-10 left-10 text-4xl font-bold z-50"
+        style={roboto.style}
       >
-        <Link href="/projects">
-          <h1 className="uppercase text-black text-[2rem] font-graphik tracking-2">
-            works
-          </h1>
-        </Link>
-        <Link href="/contact">
-          <h1 className="uppercase text-black text-[2rem] font-graphik tracking-2">
-            contact
-          </h1>
-        </Link>
-        <div
-          onClick={handleCloseMenu}
-          className="absolute top-8 right-5 w-8 h-8"
-        >
-          <div className="w rotate-45 w-8 h-[1px] bg-black origin-center absolute top-[50%]" />
-          <div className="w -rotate-45 w-8 h-[1px] bg-black origin-center absolute  top-[50%]" />
-        </div>
-      </div>
+        Ridwan.
+      </motion.div>
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 0 }}
+        transition={{ duration: 1, ease: "easeInOut", delay: 3.5 }}
+        className="fixed top-10 right-10 z-50 w-10 h-10 rounded-full bg-white flex items-center"
+        style={roboto.style}
+        onClick={() => setMenuOpen(!isMenuOpen)}
+      >
+        <Burger isOpen={isMenuOpen} />
+      </motion.div>
+
+      <AnimatePresence mode="wait">{isMenuOpen && <Sidebar />}</AnimatePresence>
     </header>
   );
 };
+
+const Burger = styled.div<{ isOpen: boolean }>`
+  width: 100%;
+  &::before,
+  &::after {
+    content: "";
+    display: block;
+    width: 40%;
+    height: 1px;
+    background-color: black;
+    margin: auto;
+    position: relative;
+    transition: all 0.3s ease-in-out;
+  }
+
+  &::after {
+    top: -3px;
+  }
+
+  &::before {
+    top: 3px;
+  }
+
+  ${({ isOpen }) =>
+    isOpen &&
+    css`
+      &::after {
+        top: -1px;
+        transform: rotate(45deg);
+      }
+      &::before {
+        top: 0px;
+        transform: rotate(-45deg);
+      }
+    `}
+`;
