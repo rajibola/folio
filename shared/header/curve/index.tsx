@@ -1,6 +1,4 @@
-import React from "react";
 import { motion } from "framer-motion";
-import styles from "./styles.module.scss";
 
 export const Curve = () => {
   const initialPath = `M100 0 L200 0 L200 ${window.innerHeight} L100 ${
@@ -31,7 +29,7 @@ export const Curve = () => {
         initial="initial"
         animate="enter"
         exit="exit"
-      ></motion.path>
+      />
     </svg>
   );
 };

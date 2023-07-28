@@ -1,9 +1,10 @@
 "use client";
 import { AnimatePresence, motion } from "framer-motion";
+import { Dosis, Roboto } from "next/font/google";
 import { useEffect, useState } from "react";
-import { Roboto, Dosis } from "next/font/google";
 import styled, { css } from "styled-components";
 import { Sidebar } from "./sidebar";
+import { usePathname } from "next/navigation";
 
 const roboto = Roboto({ weight: ["100", "300", "500"], subsets: ["cyrillic"] });
 const dosis = Dosis({ weight: ["400"], subsets: ["latin"] });
@@ -13,6 +14,11 @@ const data2 = [2, 4, 6, 8, 9, ""];
 
 export const Header = () => {
   const [isMenuOpen, setMenuOpen] = useState(false);
+  const pathname = usePathname();
+
+  useEffect(() => {
+    setMenuOpen(false);
+  }, [pathname]);
 
   return (
     <header>

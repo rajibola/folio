@@ -48,7 +48,7 @@ export const PageTransition = () => {
     <motion.div
       animate={{ height: "0" }}
       transition={{ duration: 0.5, ease: "easeInOut", delay: 2.8 }}
-      className="fixed h-screen w-screen bg-black"
+      className="fixed h-screen w-screen bg-black z-50"
     >
       <motion.div
         initial={{ opacity: 1 }}

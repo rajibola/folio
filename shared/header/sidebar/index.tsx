@@ -1,9 +1,8 @@
 import { Variants, motion } from "framer-motion";
-import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
-import { Curve } from "../curve";
 import { AnimLink } from "../anim-link";
+import { Curve } from "../curve";
 
 export const menuSlide: Variants = {
   initial: { x: "calc(100% + 100px)" },
@@ -37,12 +36,12 @@ const navItems = [
     href: "/",
   },
   {
-    title: "Work",
-    href: "/work",
+    title: "Projects",
+    href: "/projects",
   },
   {
-    title: "About",
-    href: "/about",
+    title: "Blog",
+    href: "/blog",
   },
   {
     title: "Contact",
@@ -60,7 +59,7 @@ export const Sidebar = () => {
       initial="initial"
       animate="enter"
       exit="exit"
-      className="h-screen fixed right-0 top-0 bg-white text-black"
+      className="h-screen fixed right-0 top-0 bg-white text-black z-30"
     >
       <div className="box-border h-full p-24 flex flex-col justify-between border-spacing-0">
         <div
