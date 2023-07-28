@@ -3,6 +3,7 @@ import { usePathname } from "next/navigation";
 import { useState } from "react";
 import { AnimLink } from "../anim-link";
 import { Curve } from "../curve";
+import { FooterLinks } from "../footer-links";
 
 export const menuSlide: Variants = {
   initial: { x: "calc(100% + 100px)" },
@@ -83,6 +84,7 @@ export const Sidebar = () => {
             );
           })}
         </div>
+        <FooterLinks />
       </div>
       <Curve />
     </motion.div>
