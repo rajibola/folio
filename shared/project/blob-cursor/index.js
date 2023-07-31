@@ -1,4 +1,5 @@
 /* eslint-disable react/display-name */
+"use client";
 import gsap, { Expo } from "gsap";
 import { forwardRef, useCallback, useLayoutEffect, useRef } from "react";
 import styled, { css } from "styled-components";

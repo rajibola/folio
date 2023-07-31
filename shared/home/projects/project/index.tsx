@@ -1,8 +1,9 @@
 "use client";
-import React from "react";
+import { useRouter } from "next/navigation";
 import styled from "styled-components";
 
 export const Project = ({ index, title, setModal }: any) => {
+  const router = useRouter();
   return (
     <ProjectWrapper
       onMouseEnter={() => {
@@ -11,10 +12,13 @@ export const Project = ({ index, title, setModal }: any) => {
       onMouseLeave={() => {
         setModal({ active: false, index });
       }}
+      onClick={() =>
+        router.push(`/projects/${title.split(" ").join("-").toLowerCase()}`)
+      }
       className="flex w-full hover:opacity-50 justify-between items-center py-[50px] px-[100px] border-t border-slate-500 cursor-pointer transition-all duration-300"
     >
       <h2>{title}</h2>
-      <p>Design & Development</p>
+      <p>Development</p>
     </ProjectWrapper>
   );
 };
@@ -24,7 +28,7 @@ const ProjectWrapper = styled.div`
   width: 100%;
   justify-content: space-between;
   align-items: center;
-  padding: 50px 100px 50px 100px;
+  padding: 30px 80px 30px 80px;
   border-top: 1px solid rgb(201, 201, 201);
   cursor: pointer;
   transition: all 0.2s;

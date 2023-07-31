@@ -29,7 +29,9 @@ export const Hero = () => {
     <div className="w-screen h-screen bg-black flex items-center justify-center">
       <div
         ref={textContainer}
-        className="md:text-[82px] text-[44px] md:leading-[94px] leading-[70px] font-thin md:my-[0.67em] "
+        className="md:text-[82px] text-[44px] md:leading-[94px] leading-[70px] font-thin md:my-[0.67em]"
+        data-scroll
+        data-scroll-speed={0.3}
       >
         {splitText(
           "Versatile Frontend Developer for Cutting-Edge Web and Mobile Applications",

@@ -1,10 +1,12 @@
 "use client";
+
 import { AnimatePresence, motion } from "framer-motion";
 import { Dosis, Roboto } from "next/font/google";
 import { useEffect, useState } from "react";
 import styled, { css } from "styled-components";
 import { Sidebar } from "./sidebar";
 import { usePathname } from "next/navigation";
+import { Magnetic } from "../magnetic";
 
 const roboto = Roboto({ weight: ["100", "300", "500"], subsets: ["cyrillic"] });
 const dosis = Dosis({ weight: ["400"], subsets: ["latin"] });
@@ -35,15 +37,13 @@ export const Header = () => {
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        exit={{ opacity: 0 }}
         transition={{ duration: 1, ease: "easeInOut", delay: 3.5 }}
-        className="fixed top-10 right-10 z-50 w-10 h-10 rounded-full bg-white flex items-center"
+        className="fixed top-10 right-10 z-50 w-20 h-20 rounded-full bg-white flex items-center opacity-100"
         style={roboto.style}
         onClick={() => setMenuOpen(!isMenuOpen)}
       >
         <Burger isOpen={isMenuOpen} />
       </motion.div>
-
       <AnimatePresence mode="wait">{isMenuOpen && <Sidebar />}</AnimatePresence>
     </header>
   );
@@ -58,17 +58,17 @@ const Burger = styled.div<{ isOpen: boolean }>`
     width: 40%;
     height: 1px;
     background-color: black;
-    margin: auto;
+    margin: 0 auto;
     position: relative;
     transition: all 0.3s ease-in-out;
   }
 
   &::after {
-    top: -3px;
+    top: -5px;
   }
 
   &::before {
-    top: 3px;
+    top: 5px;
   }
 
   ${({ isOpen }) =>

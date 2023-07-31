@@ -74,6 +74,24 @@ const PROJECTS: {
     tag: "web",
   },
   {
+    name: "Kindred B2B Website",
+    title: "A React Web Application",
+    tools: ["React", "Redux", "TailwindCSS", "Styled-Component", "Axios"],
+    images: [
+      "https://res.cloudinary.com/dwn5whgwh/image/upload/v1690796371/portfolio/screenshot-2023-07-31-at-102726-64c78056b4649_iljqex.webp",
+      "https://res.cloudinary.com/dwn5whgwh/image/upload/v1690796367/portfolio/screenshot-2023-07-31-at-102337-64c7805307d78_hvadrt.webp",
+      "https://res.cloudinary.com/dwn5whgwh/image/upload/v1690796368/portfolio/screenshot-2023-07-31-at-102235-64c7805089773_n7lezi.webp",
+      "https://res.cloudinary.com/dwn5whgwh/image/upload/v1690796368/portfolio/screenshot-2023-07-31-at-102551-64c7805647c1f_dvzsrw.webp",
+      "https://res.cloudinary.com/dwn5whgwh/image/upload/v1690796367/portfolio/screenshot-2023-07-31-at-102345-64c7805475c24_aukxvs.webp",
+      "https://res.cloudinary.com/dwn5whgwh/image/upload/v1690796367/portfolio/screenshot-2023-07-31-at-102330-64c78052eb61d_jlifqh.webp",
+      "https://res.cloudinary.com/dwn5whgwh/image/upload/v1690796368/portfolio/screenshot-2023-07-31-at-102357-64c78054a5aa8_mvbm6z.webp",
+    ],
+    details:
+      "We’ve worked incredibly hard to build a talented, industry leading team of professionals. With a team of creative, strategist, business and development specialists, we consistently strive to be at the forefront of new media technology.",
+    colors: [],
+    tag: "web",
+  },
+  {
     name: "Clane Website",
     title: "A React Web Application",
     tools: ["React", "Redux", "TailwindCSS", "Styled-Component", "Axios"],
@@ -89,7 +107,7 @@ const PROJECTS: {
   },
 
   {
-    name: "Rapid",
+    name: "ClanePOS",
     title: "A React Native Merchant Mobile Application",
     tools: [
       "React Native",
@@ -110,7 +128,7 @@ const PROJECTS: {
     tag: "mobile",
   },
   {
-    name: "Clane Mobile App",
+    name: "ClanePay",
     title: "A React Native Consumer Mobile Application",
     tools: [
       "React Native",
