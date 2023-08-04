@@ -19,6 +19,15 @@ module.exports = {
       transitionTimingFunction: {
         custom: "cubic-bezier(0.76, 0, 0.24, 1)",
       },
+
+      colors: {
+        black: "#000",
+        white: "#fff",
+        accent: {
+          light: "#86608e",
+          dark: "#140F14",
+        },
+      },
     },
   },
   plugins: [],

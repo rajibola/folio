@@ -136,3 +136,27 @@ export const hideText = (
     },
   });
 };
+
+// Text display
+
+// const pickedText = useRef(null);
+
+// useLayoutEffect(() => {
+//   let childs = SplitType.create(pickedText.current!, {
+//     types: "words",
+//   });
+//   let parents = SplitType.create(childs.words!, {
+//     types: "chars",
+//   });
+
+//   gsap.set(childs.words, {
+//     overflow: "hidden",
+//   });
+//   gsap.from(parents.chars, {
+//     yPercent: 130,
+//     opacity: 0,
+//     delay: 4,
+//     stagger: 0.1,
+//     ease: "back.out",
+//   });
+// }, []);

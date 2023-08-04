@@ -4,14 +4,12 @@ import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { Modal } from "./modal";
 import { Project } from "./project";
+import { Playfair_Display } from "next/font/google";
 
-// export const Projects = () => {
-//   return (
-//     <div className="w-screen h-screen flex">
-//       <h1>Projects</h1>
-//     </div>
-//   );
-// };
+const playfair = Playfair_Display({
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700", "800", "900"],
+});
 
 interface Project {
   title: string;
@@ -47,7 +45,7 @@ export const Projects = () => {
   const [modal, setModal] = useState({ active: false, index: 0 });
 
   return (
-    <main className="flex h-screen items-center justify-center flex-col ">
+    <main className="flex h-screen items-center justify-center flex-col">
       <div className="w-[1000px] flex flex-col items-center justify-center">
         {projects.map((project, index) => {
           return (

@@ -2,6 +2,7 @@ import React, { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { Magnetic } from "../magnetic";
 import styled from "styled-components";
+import ArrowUpRightIcon from "@heroicons/react/24/outline/ArrowUpRightIcon";
 
 interface ButtonProps {
   children: React.ReactNode;
@@ -11,69 +12,77 @@ interface ButtonProps {
 
 export const Button: React.FC<ButtonProps> = ({
   children,
-  backgroundColor = "#808082",
+  backgroundColor = "#1916df",
   ...attributes
 }) => {
-  const circle = useRef<HTMLDivElement>(null);
+  const circleRef = useRef<HTMLDivElement>(null);
   const timeline = useRef<gsap.core.Timeline | null>(null);
-  let timeoutId: NodeJS.Timeout | null = null;
+  const timeoutIdRef = useRef<NodeJS.Timeout | null>(null);
 
   useEffect(() => {
-    if (!circle.current) return;
+    if (!circleRef.current) return;
 
     timeline.current = gsap.timeline({ paused: true });
     timeline.current
       .to(
-        circle.current,
+        circleRef.current,
         { top: "-25%", width: "150%", duration: 0.4, ease: "power3.in" },
         "enter"
       )
       .to(
-        circle.current,
+        circleRef.current,
         { top: "-150%", width: "125%", duration: 0.25 },
         "exit"
       );
-  }, []);
+
+    // Cleanup function to clear the timeout
+    return () => {
+      if (timeoutIdRef.current) {
+        clearTimeout(timeoutIdRef.current);
+      }
+    };
+  }, [timeline]);
 
   const manageMouseEnter = () => {
-    if (timeoutId) clearTimeout(timeoutId);
+    if (timeoutIdRef.current) clearTimeout(timeoutIdRef.current);
     timeline.current?.tweenFromTo("enter", "exit");
   };
 
   const manageMouseLeave = () => {
-    timeoutId = setTimeout(() => {
+    timeoutIdRef.current = setTimeout(() => {
       timeline.current?.play();
     }, 300);
   };
 
   return (
-    <Magnetic>
-      <RoundedButton
-        style={{ overflow: "hidden" }}
-        onMouseEnter={manageMouseEnter}
-        onMouseLeave={manageMouseLeave}
-        {...attributes}
-      >
-        {children}
-        <div
-          ref={circle}
-          style={{ backgroundColor }}
-          className="w-full h-[150%] absolute rounded-[50%] top-full"
-        ></div>
-      </RoundedButton>
-    </Magnetic>
+    <RoundedButton
+      style={{ overflow: "hidden" }}
+      onMouseEnter={manageMouseEnter}
+      onMouseLeave={manageMouseLeave}
+      {...attributes}
+    >
+      {children}
+      <ArrowUpRightIcon className="h-4 w-4 text-slate-50" />
+      <div
+        ref={circleRef}
+        style={{ backgroundColor }}
+        className="w-full h-[150%] absolute rounded-[50%] top-full"
+      />
+    </RoundedButton>
   );
 };
 
 const RoundedButton = styled.div`
   border-radius: 3em;
-  border: 1px solid rgb(136, 136, 136);
+  border: 1px solid;
   cursor: pointer;
   position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 15px 60px 15px 60px;
+  padding: 15px 30px;
+  overflow: hidden;
+  gap: 20px;
   p {
     position: relative;
     z-index: 1;

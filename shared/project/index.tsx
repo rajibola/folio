@@ -13,6 +13,8 @@ export const Project = ({ slug }: { slug: string }) => {
   let project = getProject(slug);
   let nextProject = getNextProject(slug);
 
+  if (!project) return false;
+
   return (
     <div>
       <Hero title={project?.title} name={project?.name} />
