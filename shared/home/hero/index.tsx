@@ -1,11 +1,8 @@
 "use client";
-
 import useMousePosition from "@/hooks/useMousePosition";
 import { motion } from "framer-motion";
-import gsap from "gsap";
 import { Oswald } from "next/font/google";
-import { useLayoutEffect, useRef, useState } from "react";
-import SplitType from "split-type";
+import { useState, useEffect } from "react";
 import styled from "styled-components";
 
 const playfair = Oswald({
@@ -23,17 +20,37 @@ export const Hero = () => {
   const { x, y } = useMousePosition() as MousePosition;
   const size: number = isHovered ? 400 : 10;
 
+  // Add a state to track if mouse position is ready
+  const [isMousePositionReady, setIsMousePositionReady] = useState(false);
+
+  // Check if the mouse position is ready after the first load
+  useEffect(() => {
+    if (x !== null && y !== null) {
+      setIsMousePositionReady(true);
+    }
+  }, [x, y]);
+
   return (
-    <Main style={playfair.style}>
-      <motion.div
-        className="mask bg-accent-dark"
-        animate={{
-          WebkitMaskPosition: `${x - size / 2}px ${y - size / 2}px`,
-          WebkitMaskSize: `${size}px`,
+    <div style={playfair.style} className="h-screen">
+      <Mask
+        style={{
+          maskImage: 'url("./mask-image.svg")',
+          maskRepeat: "no-repeat",
+          maskSize: "40px",
         }}
+        className="bg-accent-dark absolute w-full h-full flex items-center justify-center text-white cursor-default text-[74px] leading-[76px]"
+        animate={
+          isMousePositionReady
+            ? {
+                WebkitMaskPosition: `${x - size / 2}px ${y - size / 2}px`,
+                WebkitMaskSize: `${size}px`,
+              }
+            : {}
+        }
         transition={{ type: "tween", ease: "backOut", duration: 0.5 }}
       >
         <p
+          className="p-10 text-center uppercase font-black w-[1000px]"
           onMouseEnter={() => {
             setIsHovered(true);
           }}
@@ -48,9 +65,9 @@ export const Hero = () => {
           <br /> Since
           <br /> 2018
         </p>
-      </motion.div>
-      <div className="body">
-        <p>
+      </Mask>
+      <div className="w-full h-full flex items-center justify-center text-white cursor-default text-[74px] leading-[76px]">
+        <p className="p-10 text-center uppercase font-black w-[1000px]">
           Built
           <br />
           <span className="text-accent-light">
@@ -64,11 +81,11 @@ export const Hero = () => {
           2018
         </p>
       </div>
-    </Main>
+    </div>
   );
 };
 
-const Main = styled.div`
+const Main = styled.main`
   height: 100vh;
 
   .mask,
@@ -96,12 +113,31 @@ const Main = styled.div`
     mask-image: url("./mask-image.svg");
     mask-repeat: no-repeat;
     mask-size: 40px;
-    /* background: #08080c; */
     position: absolute;
+    /* background: #08080c; */
     /* color: black; */
   }
 
   .lineParent {
     overflow: hidden;
   }
+`;
+
+const Mask = styled(motion.div)`
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #ffffff;
+  font-size: 74px;
+  line-height: 76px;
+  cursor: default;
+
+  mask-image: url("./mask-image.svg");
+  mask-repeat: no-repeat;
+  mask-size: 40px;
+  position: absolute;
+  /* background: #08080c; */
+  /* color: black; */
 `;

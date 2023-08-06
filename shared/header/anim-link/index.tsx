@@ -21,7 +21,7 @@ export const AnimLink = ({ data, isActive, setSelectedIndicator }: any) => {
       <motion.div
         variants={scale}
         animate={isActive ? "open" : "closed"}
-        className="w-[10px] h-[10px] bg-black rounded-full absolute -left-[30]"
+        className="w-[10px] h-[10px] bg-accent-light rounded-full absolute -left-[30px]"
       ></motion.div>
       <Link href={href}>{title}</Link>
     </motion.div>

@@ -1,4 +1,5 @@
-import React, { useEffect, useRef } from "react";
+"use client";
+import React, { useEffect, useLayoutEffect, useRef } from "react";
 import gsap from "gsap";
 import { Magnetic } from "../magnetic";
 import styled from "styled-components";
@@ -19,7 +20,7 @@ export const Button: React.FC<ButtonProps> = ({
   const timeline = useRef<gsap.core.Timeline | null>(null);
   const timeoutIdRef = useRef<NodeJS.Timeout | null>(null);
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     if (!circleRef.current) return;
 
     timeline.current = gsap.timeline({ paused: true });
@@ -55,42 +56,42 @@ export const Button: React.FC<ButtonProps> = ({
   };
 
   return (
-    <RoundedButton
-      style={{ overflow: "hidden" }}
+    <div
+      // style={{ overflow: "hidden" }}
       onMouseEnter={manageMouseEnter}
       onMouseLeave={manageMouseLeave}
       {...attributes}
+      className="cursor-pointer relative flex items-center justify-center overflow-hidden rounded-full border px-8 py-4"
     >
       {children}
-      <ArrowUpRightIcon className="h-4 w-4 text-slate-50" />
+
       <div
         ref={circleRef}
-        style={{ backgroundColor }}
-        className="w-full h-[150%] absolute rounded-[50%] top-full"
+        className="w-full h-[150%] absolute rounded-[50%] top-full bg-accent-light"
       />
-    </RoundedButton>
+    </div>
   );
 };
 
-const RoundedButton = styled.div`
-  border-radius: 3em;
-  border: 1px solid;
-  cursor: pointer;
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 15px 30px;
-  overflow: hidden;
-  gap: 20px;
-  p {
-    position: relative;
-    z-index: 1;
-    transition: color 0.4s linear;
-  }
-  &:hover {
-    p {
-      color: white;
-    }
-  }
-`;
+// const RoundedButton = styled.div`
+//   border-radius: 3em;
+//   border: 1px solid;
+//   cursor: pointer;
+//   position: relative;
+//   display: flex;
+//   align-items: center;
+//   justify-content: center;
+//   padding: 15px 30px;
+//   overflow: hidden;
+//   gap: 20px;
+//   p {
+//     position: relative;
+//     z-index: 1;
+//     transition: color 0.4s linear;
+//   }
+//   &:hover {
+//     p {
+//       color: white;
+//     }
+//   }
+// `;

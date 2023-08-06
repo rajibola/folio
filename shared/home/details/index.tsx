@@ -3,6 +3,8 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useCallback, useEffect, useRef } from "react";
 import { SlidingText } from "../hero/SlidingText";
+import { Button } from "@/shared/button";
+import { Magnetic } from "@/shared/magnetic";
 
 const phrase: string =
   "Hi, I'm Ridwan Ajibola. A frontend developer that focuses on building responsive cross-platform mobile applications and websites that makes user Experience realistic.";
@@ -73,6 +75,12 @@ export const Details = () => {
       className="flex flex-col h-screen items-center justify-center relative"
     >
       <div className="flex flex-wrap w-2/3">{splitWords(phrase)}</div>
+
+      <Magnetic>
+        <Button className="mt-3">
+          <p>Hello</p>
+        </Button>
+      </Magnetic>
     </main>
   );
 };
