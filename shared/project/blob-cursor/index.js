@@ -1,8 +1,16 @@
 /* eslint-disable react/display-name */
 "use client";
 import gsap, { Expo } from "gsap";
-import { forwardRef, useCallback, useLayoutEffect, useRef } from "react";
+import {
+  forwardRef,
+  useCallback,
+  useLayoutEffect,
+  useRef,
+  useState,
+  useEffect,
+} from "react";
 import styled, { css } from "styled-components";
+import Router from "next/router";
 
 function useTicker(callback, paused) {
   useLayoutEffect(() => {
@@ -24,29 +32,35 @@ function useInstance(value = {}) {
   return ref.current;
 }
 
-// Function for Mouse Move Scale Change
 function getScale(diffX, diffY) {
   const distance = Math.sqrt(Math.pow(diffX, 2) + Math.pow(diffY, 2));
   return Math.min(distance / 735, 0.35);
 }
 
-// Function For Mouse Movement Angle in Degrees
 function getAngle(diffX, diffY) {
   return (Math.atan2(diffY, diffX) * 180) / Math.PI;
 }
 
-// Jelly Blob Function
 export const BlobCursor = forwardRef((props, ref) => {
-  // React Refs for Jelly Blob and Text
   const jellyRef = useRef(null);
   const textRef = useRef(null);
+  const [paused, setPaused] = useState(true);
 
-  // Save pos and velocity Objects
+  useEffect(() => {
+    const handleRouteChange = () => {
+      gsap.to(jellyRef.current, { css: { opacity: 1 } });
+    };
+
+    Router.events.on("routeChangeStart", handleRouteChange);
+    return () => {
+      Router.events.off("routeChangeStart", handleRouteChange);
+    };
+  }, []);
+
   const pos = useInstance(() => ({ x: 0, y: 0 }));
   const vel = useInstance(() => ({ x: 0, y: 0 }));
   const set = useInstance();
 
-  // Set GSAP quick setter Values on useLayoutEffect Update
   useLayoutEffect(() => {
     set.x = gsap.quickSetter(jellyRef.current, "x", "px");
     set.y = gsap.quickSetter(jellyRef.current, "y", "px");
@@ -56,13 +70,10 @@ export const BlobCursor = forwardRef((props, ref) => {
     set.rt = gsap.quickSetter(textRef.current, "rotate", "deg");
   }, []);
 
-  // Start Animation loop
   const loop = useCallback(() => {
-    // Calculate angle and scale based on velocity
-    var rotation = getAngle(vel.x, vel.y); // Mouse Move Angle
-    var scale = getScale(vel.x, vel.y); // Blob Squeeze Amount
+    var rotation = getAngle(vel.x, vel.y);
+    var scale = getScale(vel.x, vel.y);
 
-    // Set GSAP quick setter Values on Loop Function
     set.x(pos.x);
     set.y(pos.y);
     set.r(rotation);
@@ -71,16 +82,13 @@ export const BlobCursor = forwardRef((props, ref) => {
     set.rt(-rotation);
   }, []);
 
-  // Run on Mouse Move
   useLayoutEffect(() => {
-    // Caluclate Everything Function
     const setFromEvent = (e) => {
+      setPaused(false);
       gsap.to(jellyRef.current, { css: { opacity: 1 } });
-      // Mouse X and Y
       const x = e.clientX;
       const y = e.clientY;
 
-      // Animate Position and calculate Velocity with GSAP
       gsap.to(pos, {
         x: x,
         y: y,
@@ -91,11 +99,10 @@ export const BlobCursor = forwardRef((props, ref) => {
           vel.y = y - pos.y;
         },
       });
-
-      loop();
     };
 
     const setOpacity = (e) => {
+      setPaused(true);
       gsap.to(jellyRef.current, { css: { opacity: 0 } });
     };
 
@@ -107,9 +114,8 @@ export const BlobCursor = forwardRef((props, ref) => {
     };
   }, [ref.current]);
 
-  useTicker(loop);
+  useTicker(loop, paused);
 
-  // Return UI
   return (
     <div className="container-div">
       <JellyBob ref={jellyRef} id={"jelly-id"} className="jelly-blob">

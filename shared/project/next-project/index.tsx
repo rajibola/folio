@@ -1,11 +1,11 @@
 "use client";
 
+import PROJECTS from "@/utils/PROJECTS";
 import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
+import Image from "next/image";
 import { FC, useLayoutEffect, useRef, useState } from "react";
 import { BlobCursor } from "../blob-cursor";
-import PROJECTS from "@/utils/PROJECTS";
-import Image from "next/image";
 
 export const NextProject: FC<{ project: (typeof PROJECTS)[0] }> = ({
   project,
@@ -44,7 +44,10 @@ export const NextProject: FC<{ project: (typeof PROJECTS)[0] }> = ({
         )
       }
     >
-      <section ref={next} className="h-[100vh] overflow-hidden relative">
+      <section
+        ref={next}
+        className="h-[100vh] w-screen overflow-hidden relative"
+      >
         <Image
           src={project.images[0]}
           ref={nextImge}
