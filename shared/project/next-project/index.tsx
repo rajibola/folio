@@ -6,10 +6,12 @@ import ScrollTrigger from "gsap/ScrollTrigger";
 import Image from "next/image";
 import { FC, useLayoutEffect, useRef, useState } from "react";
 import { BlobCursor } from "../blob-cursor";
+import { usePathname } from "next/navigation";
 
 export const NextProject: FC<{ project: (typeof PROJECTS)[0] }> = ({
   project,
 }) => {
+  const pathname = usePathname();
   gsap.registerPlugin(ScrollTrigger);
   const [active, setActive] = useState(false);
   const parent = useRef<HTMLDivElement>(null);
@@ -17,8 +19,8 @@ export const NextProject: FC<{ project: (typeof PROJECTS)[0] }> = ({
   const nextImge = useRef<HTMLImageElement>(null);
   useLayoutEffect(() => {
     const nextCurrent = nextImge.current;
-    gsap.to(nextCurrent, {
-      yPercent: 70,
+    gsap.from(nextCurrent, {
+      yPercent: -40,
       ease: "none",
       scrollTrigger: {
         trigger: next.current,
@@ -29,7 +31,7 @@ export const NextProject: FC<{ project: (typeof PROJECTS)[0] }> = ({
     return () => {
       gsap.killTweensOf(nextCurrent);
     };
-  }, []);
+  }, [pathname]);
 
   return (
     <div
@@ -51,10 +53,10 @@ export const NextProject: FC<{ project: (typeof PROJECTS)[0] }> = ({
         <Image
           src={project.images[0]}
           ref={nextImge}
-          className="block h-[125%] width-[100%] absolute -top-[70%] will-change-transform object-cover opacity-90"
+          className="block h-[125%] width-[100%] absolute will-change-transform object-cover opacity-90"
           sizes="(max-width: 768px) 100vw"
-          height={900}
-          width={1500}
+          height={1200}
+          width={1700}
           alt="next project"
         />
         <BlobCursor ref={parent} />
