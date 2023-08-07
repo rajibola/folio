@@ -7,6 +7,7 @@ import styled, { css } from "styled-components";
 import { Sidebar } from "./sidebar";
 import { usePathname } from "next/navigation";
 import { Magnetic } from "../magnetic";
+import { Button } from "../button";
 
 const roboto = Roboto({ weight: ["100", "300", "500"], subsets: ["cyrillic"] });
 const dosis = Dosis({ weight: ["400"], subsets: ["latin"] });
@@ -34,16 +35,18 @@ export const Header = () => {
       >
         Ridwan.
       </motion.div>
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 1, ease: "easeInOut", delay: 3.5 }}
-        className="fixed top-10 right-10 z-50 w-20 h-20 rounded-full bg-white flex items-center opacity-100"
-        style={roboto.style}
-        onClick={() => setMenuOpen(!isMenuOpen)}
-      >
-        <Burger isOpen={isMenuOpen} />
-      </motion.div>
+      <Magnetic>
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 1, ease: "easeInOut", delay: 3.5 }}
+          className="fixed top-10 right-10 z-50 w-20 h-20 rounded-full bg-white flex items-center opacity-100 cursor-pointer"
+          style={roboto.style}
+          onClick={() => setMenuOpen(!isMenuOpen)}
+        >
+          <Burger isOpen={isMenuOpen} />
+        </motion.div>
+      </Magnetic>
       <AnimatePresence mode="wait">{isMenuOpen && <Sidebar />}</AnimatePresence>
     </header>
   );

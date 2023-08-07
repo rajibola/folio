@@ -1,14 +1,8 @@
 "use client";
 import { useRouter } from "next/navigation";
 import styled from "styled-components";
-import { Playfair_Display } from "next/font/google";
 
-const playfair = Playfair_Display({
-  subsets: ["latin"],
-  weight: ["400", "500", "600", "700", "800", "900"],
-});
-
-export const Project = ({ index, title, setModal }: any) => {
+export const Project = ({ index, title, setModal, tag }: any) => {
   const router = useRouter();
   return (
     <ProjectWrapper
@@ -24,7 +18,7 @@ export const Project = ({ index, title, setModal }: any) => {
       className="flex w-full hover:opacity-50 justify-between items-center py-[50px] px-[100px] border-t border-slate-500 cursor-pointer transition-all duration-300"
     >
       <h2>{title}</h2>
-      <p style={playfair.style}>Development</p>
+      <p className="uppercase text-white/50">{tag}</p>
     </ProjectWrapper>
   );
 };

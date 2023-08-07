@@ -1,10 +1,10 @@
 "use client";
+import { Button } from "@/shared/button";
+import { Magnetic } from "@/shared/magnetic";
+import { ArrowUpRightIcon } from "@heroicons/react/24/outline";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useCallback, useEffect, useRef } from "react";
-import { SlidingText } from "../hero/SlidingText";
-import { Button } from "@/shared/button";
-import { Magnetic } from "@/shared/magnetic";
 
 const phrase: string =
   "Hi, I'm Ridwan Ajibola. A frontend developer that focuses on building responsive cross-platform mobile applications and websites that makes user Experience realistic.";
@@ -74,13 +74,29 @@ export const Details = () => {
       ref={container}
       className="flex flex-col h-screen items-center justify-center relative"
     >
-      <div className="flex flex-wrap w-2/3">{splitWords(phrase)}</div>
-
-      <Magnetic>
-        <Button className="mt-3">
-          <p>Hello</p>
-        </Button>
-      </Magnetic>
+      <div className="w-2/3 flex gap-6">
+        <div className="flex flex-wrap">{splitWords(phrase)}</div>
+        <Magnetic>
+          <a
+            className="self-start"
+            rel="noopener noreferrer"
+            href="https://www.linkedin.com/in/ridwan-ajibola-a10616191/"
+            target="_blank"
+          >
+            <Button
+              className="bg-accent-light"
+              style={{
+                height: "120px",
+                width: "120px",
+              }}
+            >
+              <Magnetic>
+                <ArrowUpRightIcon className="z-10" />
+              </Magnetic>
+            </Button>
+          </a>
+        </Magnetic>
+      </div>
     </main>
   );
 };
