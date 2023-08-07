@@ -17,12 +17,16 @@ export const Project = ({ slug }: { slug: string }) => {
 
   return (
     <div>
-      <Hero title={project?.title} name={project?.name} />
-      <Info timeline={preview} image={project!.images[2]} />
-      <LargeImage
-        image={project?.images[3] ? project?.images[3] : project?.images[1]}
+      <Hero title={project?.title} name={project.name} />
+      <Info
+        timeline={preview}
+        image={project.images[2]}
+        tools={project.tools}
       />
-      <Showcase images={project?.images} tag={project?.tag} />
+      <LargeImage
+        image={project.images[3] ? project?.images[3] : project.images[1]}
+      />
+      <Showcase images={project.images} tag={project.tag} />
       <NextProject project={nextProject} />
     </div>
   );

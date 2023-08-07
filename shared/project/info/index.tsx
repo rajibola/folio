@@ -6,10 +6,11 @@ import Image from "next/image";
 
 gsap.registerPlugin(ScrollTrigger);
 
-export const Info: FC<{ image: string; timeline: gsap.core.Timeline }> = ({
-  image,
-  timeline,
-}) => {
+export const Info: FC<{
+  image: string;
+  timeline: gsap.core.Timeline;
+  tools: string[];
+}> = ({ image, timeline, tools }) => {
   const bgImage = useRef<HTMLImageElement>(null);
   const imageCover = useRef<HTMLDivElement>(null);
 
@@ -65,13 +66,15 @@ export const Info: FC<{ image: string; timeline: gsap.core.Timeline }> = ({
           <div className="text-white w-1/3 font-graphik text-[1.25rem] leading-[1.8] self-start mb-6 md:mb-0">
             <h1>Tools</h1>
           </div>
-          <div className="text-white md:w-96 w-auto font-graphik md:text-[1.25rem] text-base leading-[1.8]">
-            <p>
-              We’ve worked incredibly hard to build a talented, industry leading
-              team of professionals. With a team of creative, strategist,
-              business and development specialists, we consistently strive to be
-              at the forefront of new media technology.
-            </p>
+          <div className="text-white md:w-96 w-auto font-graphik md:text-[1.25rem] text-base leading-[1.8] flex flex-wrap gap-3">
+            {tools.map((item, i) => (
+              <div
+                key={i}
+                className="px-2 py-[4px] bg-white/20 backdrop-blur-md rounded-lg text-white uppercase text-[10px] font-semibold tracking-wide"
+              >
+                {item}
+              </div>
+            ))}
           </div>
         </div>
       </div>
