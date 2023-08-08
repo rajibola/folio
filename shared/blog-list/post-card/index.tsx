@@ -76,7 +76,7 @@ export const PostCard = ({
             {author.name}
           </div>
           <div className="font-lg mb-4 text-lg uppercase leading-[1.6]">
-            A component library for building Animere
+            {title}
           </div>
 
           {/* <p className="font-light text-[12px] mt-3">
