@@ -2,6 +2,7 @@ import { Header } from "@/shared/header";
 import { LocomotiveScroller } from "@/shared/locomotive-scroller";
 import { Lato } from "next/font/google";
 import "../globals.css";
+import { Footer } from "@/shared/footer";
 
 const inter = Lato({
   subsets: ["latin"],
@@ -24,6 +25,7 @@ export default function RootLayout({
         <LocomotiveScroller />
         <Header />
         {children}
+        <Footer />
       </body>
     </html>
   );

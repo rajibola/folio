@@ -76,7 +76,7 @@ export const Details = () => {
     >
       <div className="w-2/3 flex gap-6">
         <div className="flex flex-wrap">{splitWords(phrase)}</div>
-        <Magnetic>
+        {/* <Magnetic>
           <a
             className="self-start"
             rel="noopener noreferrer"
@@ -95,7 +95,7 @@ export const Details = () => {
               </Magnetic>
             </Button>
           </a>
-        </Magnetic>
+        </Magnetic> */}
       </div>
     </main>
   );
