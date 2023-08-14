@@ -1,29 +1,43 @@
 "use client";
-import gsap from "gsap";
-import { FC, useLayoutEffect, useRef, useState } from "react";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { Magnetic } from "../magnetic";
-import { Button } from "../button";
 import { ArrowUpRightIcon } from "@heroicons/react/24/outline";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { useEffect, useRef, useState } from "react";
+import { ButtonComponent } from "../button";
+import { Magnetic } from "../magnetic";
+import { usePathname } from "next/navigation";
 
 export const Footer = () => {
   const [showOptions, setShowOptions] = useState(false);
   const inner = useRef<HTMLDivElement>(null);
   const wrapper = useRef<HTMLDivElement>(null);
-  useLayoutEffect(() => {
+  const pathname = usePathname();
+
+  useEffect(() => {
     gsap.registerPlugin(ScrollTrigger);
-    gsap.from(inner.current, {
-      scrollTrigger: {
-        trigger: wrapper.current,
-        scrub: true,
-        start: `40% bottom`,
-        end: `bottom bottom`,
-      },
-      ease: "none",
-      yPercent: -150,
-      alpha: 0,
-    });
   }, []);
+
+  useEffect(() => {
+    const animation = gsap.fromTo(
+      inner.current,
+      { yPercent: -150, alpha: 0 },
+      {
+        scrollTrigger: {
+          trigger: wrapper.current,
+          scrub: true,
+          start: "40% bottom",
+          end: "bottom bottom",
+        },
+        ease: "none",
+        yPercent: 0,
+        alpha: 1,
+      }
+    );
+
+    return () => {
+      animation.kill(); 
+
+
   return (
     <div
       ref={wrapper}
@@ -45,10 +59,10 @@ export const Footer = () => {
             <a
               className="self-start"
               rel="noopener noreferrer"
-              href="https://www.linkedin.com/in/ridwan-ajibola-a10616191/"
+              href="mailto:rajibola1997@gmail.com"
               target="_blank"
             >
-              <Button
+              <ButtonComponent
                 className="bg-accent-light"
                 style={{
                   height: "120px",
@@ -60,7 +74,7 @@ export const Footer = () => {
                 <Magnetic>
                   <ArrowUpRightIcon className="z-10" />
                 </Magnetic>
-              </Button>
+              </ButtonComponent>
             </a>
           </Magnetic>
         </div>

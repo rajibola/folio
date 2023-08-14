@@ -11,7 +11,7 @@ interface ButtonProps {
   [x: string]: any; // for other props which can be spread into the div element
 }
 
-export const Button: React.FC<ButtonProps> = ({
+export const ButtonComponent: React.FC<ButtonProps> = ({
   children,
   backgroundColor = "#1916df",
   ...attributes

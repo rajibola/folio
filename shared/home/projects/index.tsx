@@ -1,5 +1,5 @@
 "use client";
-import { Button } from "@/shared/button";
+import { ButtonComponent } from "@/shared/button";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { Modal } from "./modal";
@@ -71,11 +71,11 @@ export const Projects = () => {
 
         <Magnetic>
           <div className="self-center">
-            <Button onClick={() => router.push(`/projects`)}>
+            <ButtonComponent onClick={() => router.push(`/projects`)}>
               <Magnetic>
                 <p className="z-10">More projects</p>
               </Magnetic>
-            </Button>
+            </ButtonComponent>
           </div>
         </Magnetic>
       </div>

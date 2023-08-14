@@ -1,7 +1,4 @@
 "use client";
-import { Button } from "@/shared/button";
-import { Magnetic } from "@/shared/magnetic";
-import { ArrowUpRightIcon } from "@heroicons/react/24/outline";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useCallback, useEffect, useRef } from "react";
@@ -83,7 +80,7 @@ export const Details = () => {
             href="https://www.linkedin.com/in/ridwan-ajibola-a10616191/"
             target="_blank"
           >
-            <Button
+            <ButtonComponent
               className="bg-accent-light"
               style={{
                 height: "120px",
@@ -93,7 +90,7 @@ export const Details = () => {
               <Magnetic>
                 <ArrowUpRightIcon className="z-10" />
               </Magnetic>
-            </Button>
+            </ButtonComponent>
           </a>
         </Magnetic> */}
       </div>

@@ -7,7 +7,6 @@ import styled, { css } from "styled-components";
 import { Sidebar } from "./sidebar";
 import { usePathname } from "next/navigation";
 import { Magnetic } from "../magnetic";
-import { Button } from "../button";
 
 const roboto = Roboto({ weight: ["100", "300", "500"], subsets: ["cyrillic"] });
 const dosis = Dosis({ weight: ["400"], subsets: ["latin"] });
