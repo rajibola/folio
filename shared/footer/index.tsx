@@ -35,8 +35,9 @@ export const Footer = () => {
     );
 
     return () => {
-      animation.kill(); 
-
+      animation.kill();
+    };
+  }, [pathname]);
 
   return (
     <div
