@@ -60,7 +60,7 @@ export const Sidebar = () => {
       initial="initial"
       animate="enter"
       exit="exit"
-      className="h-screen fixed right-0 top-0 bg-white text-black z-30"
+      className="h-screen fixed right-0 top-0 bg-white text-black z-30 md:w-fit w-full"
     >
       <div className="box-border h-full p-24 flex flex-col justify-between border-spacing-0">
         <div

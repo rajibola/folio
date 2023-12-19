@@ -1,13 +1,14 @@
 "use client";
 import useMousePosition from "@/hooks/useMousePosition";
 import { motion } from "framer-motion";
-import { Oswald } from "next/font/google";
+import { Oswald, Advent_Pro } from "next/font/google";
 import { useState, useEffect } from "react";
 import styled from "styled-components";
 
 const playfair = Oswald({
   subsets: ["latin"],
   weight: ["400", "500", "600", "700"],
+  fallback: ["latin"],
 });
 
 interface MousePosition {

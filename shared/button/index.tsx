@@ -67,7 +67,7 @@ export const ButtonComponent: React.FC<ButtonProps> = ({
 
       <div
         ref={circleRef}
-        className="w-full h-[150%] absolute rounded-[50%] top-full bg-accent-light"
+        className="md:w-full md:h-[150%] absolute rounded-[50%] top-full bg-accent-light w-full h-[80px]"
       />
     </div>
   );

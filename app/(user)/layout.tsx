@@ -7,6 +7,7 @@ import { Footer } from "@/shared/footer";
 const inter = Lato({
   subsets: ["latin"],
   weight: ["100", "300", "400", "700", "900"],
+  fallback: ["latin"],
 });
 
 export const metadata = {

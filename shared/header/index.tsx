@@ -8,7 +8,11 @@ import { Sidebar } from "./sidebar";
 import { usePathname } from "next/navigation";
 import { Magnetic } from "../magnetic";
 
-const roboto = Roboto({ weight: ["100", "300", "500"], subsets: ["cyrillic"] });
+const roboto = Roboto({
+  weight: ["100", "300", "500"],
+  subsets: ["cyrillic"],
+  fallback: ["cyrillic"],
+});
 const dosis = Dosis({ weight: ["400"], subsets: ["latin"] });
 
 const data = [0, 3, 5, 7, 9, ""];

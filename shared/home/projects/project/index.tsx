@@ -15,9 +15,9 @@ export const Project = ({ index, title, setModal, tag }: any) => {
       onClick={() =>
         router.push(`/projects/${title.split(" ").join("-").toLowerCase()}`)
       }
-      className="flex w-full hover:opacity-50 justify-between items-center py-[50px] px-[100px] border-t border-slate-500 cursor-pointer transition-all duration-300"
+      className="flex w-full hover:opacity-50 justify-between items-center md:py-[30px] md:px-[80px] p-[20px_40px] border-t border-slate-500 cursor-pointer transition-all duration-300"
     >
-      <h2>{title}</h2>
+      <h2 className="md:text-[60px] text-[30px]">{title}</h2>
       <p className="uppercase text-white/50">{tag}</p>
     </ProjectWrapper>
   );
@@ -28,7 +28,6 @@ const ProjectWrapper = styled.div`
   width: 100%;
   justify-content: space-between;
   align-items: center;
-  padding: 30px 80px 30px 80px;
   border-top: 1px solid rgb(201, 201, 201);
   cursor: pointer;
   transition: all 0.2s;
@@ -50,7 +49,7 @@ const ProjectWrapper = styled.div`
   }
 
   & h2 {
-    font-size: 60px;
+    /* font-size: 60px; */
     margin: 0px;
     font-weight: 400;
     transition: all 0.4s;

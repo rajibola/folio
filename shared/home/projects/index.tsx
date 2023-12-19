@@ -11,6 +11,7 @@ import { ArrowUpRightIcon } from "@heroicons/react/24/outline";
 const playfair = Playfair_Display({
   subsets: ["latin"],
   weight: ["400", "500", "600", "700", "800", "900"],
+  fallback: ["latin"],
 });
 
 interface Project {
@@ -53,8 +54,8 @@ export const Projects = () => {
 
   return (
     <main className="flex min-h-screen items-center justify-center">
-      <div className="w-2/3 flex flex-col gap-6">
-        <div className="w-[1000px] flex flex-col items-center justify-center">
+      <div className="md:w-2/3 flex flex-col gap-14 w-full">
+        <div className="w-full flex flex-col items-center justify-center">
           {projects.map((project, index) => {
             return (
               <Project

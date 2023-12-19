@@ -44,8 +44,10 @@ export const Footer = () => {
       ref={wrapper}
       className="w-screen h-screen relative overflow-hidden flex items-center justify-center"
     >
-      <div ref={inner} className="w-1/2 flex flex-col">
-        <h1 className="text-[7vw] leading-none mb-4">Let's work together</h1>
+      <div ref={inner} className="md:w-1/2 flex flex-col w-2/3">
+        <h1 className="md:text-[7vw] md:leading-none md:mb-4 text-[58px] font-bold leading-none mb-8">
+          Let's work together
+        </h1>
         <div className="relative w-min">
           {showOptions ? (
             <div
@@ -64,7 +66,7 @@ export const Footer = () => {
               target="_blank"
             >
               <ButtonComponent
-                className="bg-accent-light"
+                className="bg-accent-light w-[120px] h-[120px]"
                 style={{
                   height: "120px",
                   width: "120px",

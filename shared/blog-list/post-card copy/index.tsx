@@ -6,10 +6,12 @@ import Image from "next/image";
 const oswald = Montserrat({
   subsets: ["latin"],
   weight: ["400", "500", "600", "700"],
+  fallback: ["latin"],
 });
 const dosis = Hind({
   subsets: ["latin"],
   weight: ["400", "500", "600", "700"],
+  fallback: ["latin"],
 });
 
 interface Props {
