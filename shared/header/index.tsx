@@ -33,7 +33,7 @@ export const Header = () => {
         animate={{ opacity: 1 }}
         exit={{ opacity: 0 }}
         transition={{ duration: 1, ease: "easeInOut", delay: 3.5 }}
-        className="absolute top-10 left-10 text-4xl font-bold z-50"
+        className="absolute top-10 left-10 md:text-4xl md:font-bold z-50 text-[24px] font-normal"
         style={roboto.style}
       >
         Ridwan.
@@ -43,7 +43,7 @@ export const Header = () => {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 1, ease: "easeInOut", delay: 3.5 }}
-          className="fixed top-10 right-10 z-50 w-20 h-20 rounded-full bg-white flex items-center opacity-100 cursor-pointer"
+          className="fixed md:top-10 md:right-10 top-5 right-5 z-50 md:w-20 md:h-20 h-14 w-14 rounded-full bg-white flex items-center opacity-100 cursor-pointer"
           style={roboto.style}
           onClick={() => setMenuOpen(!isMenuOpen)}
         >

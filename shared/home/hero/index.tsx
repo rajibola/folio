@@ -39,7 +39,7 @@ export const Hero = () => {
           maskRepeat: "no-repeat",
           maskSize: "40px",
         }}
-        className="bg-accent-dark absolute w-full h-full flex items-center justify-center text-white cursor-default text-[74px] leading-[76px]"
+        className="bg-accent-dark absolute w-full h-full flex items-center justify-center text-white cursor-default md:text-[74px] md:leading-[76px] text-[46px] leading-[48px]"
         animate={
           isMousePositionReady
             ? {
@@ -67,7 +67,7 @@ export const Hero = () => {
           <br /> 2018
         </p>
       </Mask>
-      <div className="w-full h-full flex items-center justify-center text-white cursor-default text-[74px] leading-[76px]">
+      <div className="w-full h-full flex items-center justify-center text-white cursor-default md:text-[74px] md:leading-[76px] text-[46px] leading-[48px]">
         <p className="p-10 text-center uppercase font-black w-[1000px]">
           Built
           <br />
@@ -131,8 +131,8 @@ const Mask = styled(motion.div)`
   align-items: center;
   justify-content: center;
   color: #ffffff;
-  font-size: 74px;
-  line-height: 76px;
+  /* font-size: 74px;
+  line-height: 76px; */
   cursor: default;
 
   mask-image: url("./mask-image.svg");
