@@ -7,6 +7,7 @@ import { Project } from "./project";
 import { Playfair_Display } from "next/font/google";
 import { Magnetic } from "@/shared/magnetic";
 import { ArrowUpRightIcon } from "@heroicons/react/24/outline";
+import MarqueeImages from "@/shared/marquee";
 
 const playfair = Playfair_Display({
   subsets: ["latin"],
@@ -53,33 +54,36 @@ export const Projects = () => {
   const [modal, setModal] = useState({ active: false, index: 0 });
 
   return (
-    <main className="flex min-h-screen items-center justify-center">
-      <div className="md:w-2/3 flex flex-col gap-14 w-full">
-        <div className="w-full flex flex-col items-center justify-center">
-          {projects.map((project, index) => {
-            return (
-              <Project
-                index={index}
-                title={project.title}
-                setModal={setModal}
-                tag={project.tag}
-                key={index}
-              />
-            );
-          })}
-        </div>
-        <Modal modal={modal} projects={projects} />
-
-        <Magnetic>
-          <div className="self-center">
-            <ButtonComponent onClick={() => router.push(`/projects`)}>
-              <Magnetic>
-                <p className="z-10">More projects</p>
-              </Magnetic>
-            </ButtonComponent>
+    <>
+      <MarqueeImages direction="right" />
+      <main className="flex min-h-screen items-center justify-center">
+        <div className="md:w-2/3 flex flex-col gap-14 w-full">
+          <div className="w-full flex flex-col items-center justify-center">
+            {projects.map((project, index) => {
+              return (
+                <Project
+                  index={index}
+                  title={project.title}
+                  setModal={setModal}
+                  tag={project.tag}
+                  key={index}
+                />
+              );
+            })}
           </div>
-        </Magnetic>
-      </div>
-    </main>
+          <Modal modal={modal} projects={projects} />
+
+          <Magnetic>
+            <div className="self-center">
+              <ButtonComponent onClick={() => router.push(`/projects`)}>
+                <Magnetic>
+                  <p className="z-10">More projects</p>
+                </Magnetic>
+              </ButtonComponent>
+            </div>
+          </Magnetic>
+        </div>
+      </main>
+    </>
   );
 };

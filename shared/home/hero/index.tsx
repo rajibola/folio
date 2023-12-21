@@ -1,5 +1,6 @@
 "use client";
 import useMousePosition from "@/hooks/useMousePosition";
+import MarqueeImages from "@/shared/marquee";
 import { motion } from "framer-motion";
 import { Oswald, Advent_Pro } from "next/font/google";
 import { useState, useEffect } from "react";
@@ -82,6 +83,7 @@ export const Hero = () => {
           2018
         </p>
       </div>
+      <MarqueeImages />
     </div>
   );
 };

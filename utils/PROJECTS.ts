@@ -263,3 +263,64 @@ const PROJECTS: {
 ];
 
 export default PROJECTS;
+
+export const PROJECTS_IMAGES: {
+  image: string;
+  alt: string;
+}[] = [
+  {
+    image:
+      "https://res.cloudinary.com/dwn5whgwh/image/upload/v1684825840/portfolio/screenshot-2023-05-21-at-173739_mo61rx.webp",
+    alt: "bannerwave",
+  },
+  {
+    image:
+      "https://res.cloudinary.com/dwn5whgwh/image/upload/v1684690680/portfolio/4_ahkyyy.webp",
+    alt: "clane pos",
+  },
+  {
+    image:
+      "https://res.cloudinary.com/dwn5whgwh/image/upload/v1690796371/portfolio/screenshot-2023-07-31-at-102726-64c78056b4649_iljqex.webp",
+    alt: "kindred",
+  },
+  {
+    image:
+      "https://res.cloudinary.com/dwn5whgwh/image/upload/v1684690592/portfolio/1_pt9d3q.webp",
+    alt: "clane",
+  },
+  {
+    image:
+      "https://res.cloudinary.com/dwn5whgwh/image/upload/v1684690496/portfolio/4_wqzgmp.webp",
+    alt: "brij",
+  },
+  {
+    image:
+      "https://res.cloudinary.com/dwn5whgwh/image/upload/v1684691043/portfolio/1_ugjdc6.webp",
+    alt: "scandiweb",
+  },
+  {
+    image:
+      "https://res.cloudinary.com/dwn5whgwh/image/upload/v1684690550/portfolio/4_pksak5.webp",
+    alt: "clane pay",
+  },
+  {
+    image:
+      "https://res.cloudinary.com/dwn5whgwh/image/upload/v1684696710/portfolio/1_udec3m.webp",
+    alt: "old portfolio",
+  },
+  // {
+  //   image:
+  //     "https://res.cloudinary.com/dwn5whgwh/image/upload/v1684690731/portfolio/4_nclwxy.webp",
+  //   alt: "tarvos",
+  // },
+  {
+    image:
+      "https://res.cloudinary.com/dwn5whgwh/image/upload/v1684690856/portfolio/4_ybzstt.webp",
+    alt: "prospa",
+  },
+  {
+    image:
+      "https://res.cloudinary.com/dwn5whgwh/image/upload/v1684688893/portfolio/4_zc6eoe.webp",
+    alt: "brass",
+  },
+];
