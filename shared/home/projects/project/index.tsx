@@ -15,10 +15,10 @@ export const Project = ({ index, title, setModal, tag }: any) => {
       onClick={() =>
         router.push(`/projects/${title.split(" ").join("-").toLowerCase()}`)
       }
-      className="flex w-full hover:opacity-50 justify-between items-center md:py-[30px] md:px-[80px] p-[20px_40px] border-t border-slate-500 cursor-pointer transition-all duration-300"
+      className="flex w-full hover:opacity-50 justify-between items-center md:py-[60px] md:px-[80px] p-[20px_40px] border-t-[0.5px] border-white/25 cursor-pointer transition-all duration-300"
     >
       <h2 className="md:text-[60px] text-[30px]">{title}</h2>
-      <p className="uppercase text-white/50">{tag}</p>
+      <p className="capitalize text-white/50">{tag}</p>
     </ProjectWrapper>
   );
 };
@@ -49,7 +49,6 @@ const ProjectWrapper = styled.div`
   }
 
   & h2 {
-    /* font-size: 60px; */
     margin: 0px;
     font-weight: 400;
     transition: all 0.4s;

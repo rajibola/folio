@@ -8,6 +8,7 @@ import { Playfair_Display } from "next/font/google";
 import { Magnetic } from "@/shared/magnetic";
 import { ArrowUpRightIcon } from "@heroicons/react/24/outline";
 import MarqueeImages from "@/shared/marquee";
+import { PROJECTS_COUNT } from "@/utils/PROJECTS";
 
 const playfair = Playfair_Display({
   subsets: ["latin"],
@@ -57,7 +58,7 @@ export const Projects = () => {
     <>
       <MarqueeImages direction="right" />
       <main className="flex min-h-screen items-center justify-center">
-        <div className="md:w-2/3 flex flex-col gap-14 w-full">
+        <div className="md:w-5/6 flex flex-col gap-14 w-full">
           <div className="w-full flex flex-col items-center justify-center">
             {projects.map((project, index) => {
               return (
@@ -75,9 +76,17 @@ export const Projects = () => {
 
           <Magnetic>
             <div className="self-center">
-              <ButtonComponent onClick={() => router.push(`/projects`)}>
+              <ButtonComponent
+                count={projects.length}
+                onClick={() => router.push(`/projects`)}
+              >
                 <Magnetic>
-                  <p className="z-10">More projects</p>
+                  <p className="z-10 relative font-light">
+                    More work{" "}
+                    <div className="absolute -right-3 -top-1 opacity-50 text-[9.5px]">
+                      {PROJECTS_COUNT}
+                    </div>
+                  </p>
                 </Magnetic>
               </ButtonComponent>
             </div>

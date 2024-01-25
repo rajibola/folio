@@ -264,6 +264,8 @@ const PROJECTS: {
 
 export default PROJECTS;
 
+export const PROJECTS_COUNT = PROJECTS.length;
+
 export const PROJECTS_IMAGES: {
   image: string;
   alt: string;

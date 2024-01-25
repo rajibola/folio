@@ -61,10 +61,9 @@ export const ButtonComponent: React.FC<ButtonProps> = ({
       onMouseEnter={manageMouseEnter}
       onMouseLeave={manageMouseLeave}
       {...attributes}
-      className="cursor-pointer relative flex items-center justify-center overflow-hidden rounded-full border px-8 py-4"
+      className="cursor-pointer relative flex items-center justify-center overflow-hidden rounded-full border border-white/25 px-8 h-[4.25em]"
     >
       {children}
-
       <div
         ref={circleRef}
         className="md:w-full md:h-[150%] absolute rounded-[50%] top-full bg-accent-light w-full h-[80px]"

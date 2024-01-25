@@ -54,7 +54,7 @@ export const Details = () => {
         const letters = splitLetters(word);
         body.push(
           <p
-            className="font-bold m-0 mr-[1vw] md:text-[3.5vw] md:leading-tight text-[30px] leading-10"
+            className="font-bold m-0 mr-[1vw] md:text-[3.5vw] md:leading-tight text-[24px] leading-10"
             key={word + "_" + i}
           >
             {letters}
