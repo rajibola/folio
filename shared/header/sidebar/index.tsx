@@ -43,11 +43,12 @@ const navItems = [
   {
     title: "Blog",
     href: "/blog",
+    comingSoon: true,
   },
-  {
-    title: "Contact",
-    href: "/contact",
-  },
+  // {
+  //   title: "Contact",
+  //   href: "/contact",
+  // },
 ];
 
 export const Sidebar = () => {
