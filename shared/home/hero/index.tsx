@@ -75,7 +75,7 @@ export const Hero = () => {
           Building
           <br />
           <span className="text-accent-light">
-            Nice
+            great
             <br />
             apps
           </span>
