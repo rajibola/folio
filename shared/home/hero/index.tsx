@@ -1,6 +1,8 @@
 "use client";
 import useMousePosition from "@/hooks/useMousePosition";
 import MarqueeImages from "@/shared/marquee";
+import MarqueeText from "@/shared/marquee/MarqueeText";
+import { SKILLS } from "@/utils/PROJECTS";
 import { motion } from "framer-motion";
 import { Oswald, Advent_Pro } from "next/font/google";
 import { useState, useEffect } from "react";
@@ -70,7 +72,7 @@ export const Hero = () => {
       </Mask>
       <div className="w-full h-full flex items-center justify-center text-white cursor-default md:text-[74px] md:leading-[76px] text-[46px] leading-[48px]">
         <p className="p-10 text-center uppercase font-black w-[1000px]">
-          Built
+          Building
           <br />
           <span className="text-accent-light">
             Nice
@@ -83,7 +85,12 @@ export const Hero = () => {
           2018
         </p>
       </div>
-      <MarqueeImages />
+      <div className="rotate-2 mt-6">
+        <MarqueeText data={SKILLS} />
+      </div>
+      <div className="-rotate-2 bg-black -mt-10">
+        <MarqueeText direction="right" data={SKILLS} />
+      </div>
     </div>
   );
 };
