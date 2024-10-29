@@ -27,7 +27,7 @@ export const Project = ({ slug }: { slug: string }) => {
         image={project.images[3] ? project?.images[3] : project.images[1]}
       />
       <Showcase images={project.images} tag={project.tag} />
-      <NextProject project={nextProject} />
+      {/* <NextProject project={nextProject} /> */}
     </div>
   );
 };
