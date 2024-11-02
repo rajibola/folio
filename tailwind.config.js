@@ -23,6 +23,7 @@ module.exports = {
       colors: {
         black: "#000",
         white: "#fff",
+        cream: "rgb(248 246 239)",
         accent: {
           light: "#86608e",
           dark: "#140F14",
