@@ -2,10 +2,11 @@
 
 import { PROJECTS_IMAGES } from "@/utils/PROJECTS";
 import { useGSAP } from "@gsap/react";
-import gsap from "gsap";
+import gsap, { Back, Bounce, Power3, Power4 } from "gsap";
 import { Inter_Tight, Playfair_Display } from "next/font/google";
 import Image from "next/image";
 import { useRef } from "react";
+import SplitType from "split-type";
 
 const oswald = Inter_Tight({
   subsets: ["latin"],
@@ -22,74 +23,90 @@ const playfair = Playfair_Display({
 
 export const NewHero = () => {
   const containerRef = useRef<HTMLDivElement | null>(null);
-  const imageRefs = useRef<(HTMLImageElement | null)[]>([]);
-  const overlayRefs = useRef<(HTMLDivElement | null)[]>([]);
+  const splitFrontRef = useRef<HTMLDivElement | null>(null);
 
   useGSAP(
     () => {
-      gsap.fromTo(
-        imageRefs.current,
-        { scale: 1.6 },
+      let splitFrontTextInstance: SplitType | null = null;
+
+      if (splitFrontRef.current) {
+        splitFrontTextInstance = new SplitType(splitFrontRef.current, {
+          types: "chars",
+        });
+      }
+      const tl = gsap.timeline();
+
+      // Group all image animations to happen simultaneously
+      tl.fromTo(
+        ".image-list",
+        { scale: 2 },
+        { scale: 1, duration: 1.7, ease: Power3.easeOut, stagger: -0.5 },
+        "<" // Start at the same time as the previous animation
+      ).fromTo(
+        ".image-list",
+        { clipPath: "inset(100% 0 0 0)" },
         {
-          scale: 1,
-          duration: 1,
-          ease: "power2.out",
-          stagger: 0.2,
-        }
+          clipPath: "inset(0% 0 0 0)",
+          duration: 1.5,
+          ease: Power3.easeOut,
+          stagger: -0.5,
+        },
+        "<" // Start at the same time as the previous animations
       );
 
-      gsap.fromTo(
-        overlayRefs.current,
-        { y: 0 },
+      // Animate hero title after all images are complete
+      tl.fromTo(
+        splitFrontTextInstance?.chars as HTMLElement[],
+        { y: "100%" },
         {
-          y: "100%",
-          duration: 0.4,
-          ease: "power2.out",
-          delay: 0.2,
-          stagger: 0.1,
-        }
+          y: 0,
+          duration: 1,
+          ease: Back.easeOut,
+          stagger: 0.02,
+        },
+        "-=1.5"
       );
     },
     { scope: containerRef, dependencies: [] }
   );
 
   return (
-    <div style={oswald.style} className="min-h-screen">
+    <div ref={containerRef} style={oswald.style} className="min-h-screen">
       <div className="w-full min-h-screen px-10 text-cream">
-        <div
-          ref={containerRef}
-          className="grid grid-cols-3 grid-rows-[repeat(5,_95px)] mt-24 gap-x-10"
-        >
-          {[0, 6, 4].map((index, i) => (
+        <div className="grid grid-cols-3 grid-rows-[repeat(5,_95px)] mt-24 gap-x-10">
+          {[3, 4, 6].map((index, i) => (
             <div
               key={i}
-              className={`bg-white row-span-${i + 3} relative overflow-hidden`}
+              style={{
+                gridRow: `span ${i + 3}`,
+              }}
+              className={`row-span-3 relative overflow-hidden image-container`}
             >
               <Image
-                ref={(el) => (imageRefs.current[i] = el)}
-                className="w-full h-full object-cover absolute"
+                className="w-full h-full object-cover absolute image-list opacity-90"
                 src={PROJECTS_IMAGES[index].image}
                 alt=""
                 fill
-              />
-
-              <div
-                ref={(el) => (overlayRefs.current[i] = el)}
-                className="absolute top-0 bg-black w-full h-full"
+                style={{ clipPath: "inset(0 0 100% 0)" }}
               />
             </div>
           ))}
         </div>
 
         <div className="grid grid-cols-3 gap-4">
-          <div className="text-[148px] col-span-2 leading-[0.9] tracking-[-0.04em] font-bold">
-            <div className="p-0">
-              FRONT
-              <span style={playfair.style} className="italic font-light ml-4">
-                end
-              </span>
+          <div className="col-span-2 leading-[0.9] tracking-[-0.04em] font-bold overflow-hidden">
+            <div
+              ref={splitFrontRef}
+              className="text-[148px] leading-[0.9] tracking-[-0.04em] font-bold"
+            >
+              <h1 className="p-0 overflow-y-hidden">
+                FRONT
+                <span style={playfair.style} className="italic font-light px-4">
+                  end
+                </span>
+              </h1>
+              <h1 className="split">DEVELOPER</h1>
             </div>
-            <h1>DEVELOPER</h1>
           </div>
 
           <div className="self-end">
