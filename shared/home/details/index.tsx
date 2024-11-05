@@ -1,7 +1,21 @@
 "use client";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { Inter_Tight, Playfair_Display } from "next/font/google";
 import { useCallback, useEffect, useRef } from "react";
+
+const oswald = Inter_Tight({
+  subsets: ["latin"],
+  weight: ["100", "200", "300", "400", "700", "800"],
+  fallback: ["latin"],
+});
+
+const playfair = Playfair_Display({
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
+  fallback: ["latin"],
+  style: ["italic", "normal"],
+});
 
 const phrase: string =
   "Hi, I'm Ridwan Ajibola. A frontend developer that focuses on building responsive cross-platform mobile applications and websites that makes user Experience realistic.";
@@ -54,7 +68,7 @@ export const Details = () => {
         const letters = splitLetters(word);
         body.push(
           <p
-            className="font-bold m-0 mr-[1vw] md:text-[3.5vw] md:leading-tight text-[24px] leading-10"
+            className="font-semibold m-0 mr-[1vw] md:text-[3.5vw] md:leading-tight text-[24px] leading-10"
             key={word + "_" + i}
           >
             {letters}
@@ -72,7 +86,12 @@ export const Details = () => {
       className="flex flex-col h-screen items-center justify-center relative"
     >
       <div className="w-2/3 flex gap-6">
-        <div className="flex flex-wrap">{splitWords(phrase)}</div>
+        <div
+          style={oswald.style}
+          className="flex flex-wrap text-center justify-center"
+        >
+          {splitWords(phrase)}
+        </div>
         {/* <Magnetic>
           <a
             className="self-start"
