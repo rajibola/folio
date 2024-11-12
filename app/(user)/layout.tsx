@@ -3,6 +3,7 @@ import { LocomotiveScroller } from "@/shared/locomotive-scroller";
 import { Lato } from "next/font/google";
 import "../globals.css";
 import { Footer } from "@/shared/footer";
+import { TransitionProvider } from "@/context/TransitionContext";
 
 const inter = Lato({
   subsets: ["latin"],
@@ -22,12 +23,14 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={inter.className}>
-        <LocomotiveScroller />
-        <Header />
-        {children}
-        <Footer />
-      </body>
+      <TransitionProvider>
+        <body className={inter.className}>
+          <LocomotiveScroller />
+          <Header />
+          {children}
+          <Footer />
+        </body>
+      </TransitionProvider>
     </html>
   );
 }
