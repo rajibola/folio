@@ -56,7 +56,6 @@ export const Projects = () => {
 
   return (
     <>
-      <MarqueeImages direction="right" />
       <main className="flex min-h-screen items-center justify-center">
         <div className="md:w-5/6 flex flex-col gap-14 w-full">
           <div className="w-full flex flex-col items-center justify-center">

@@ -1,9 +1,7 @@
 "use client";
-import React, { useEffect, useLayoutEffect, useRef } from "react";
+import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
-import { Magnetic } from "../magnetic";
-import styled from "styled-components";
-import ArrowUpRightIcon from "@heroicons/react/24/outline/ArrowUpRightIcon";
+import React, { useRef } from "react";
 
 interface ButtonProps {
   children: React.ReactNode;
@@ -20,7 +18,7 @@ export const ButtonComponent: React.FC<ButtonProps> = ({
   const timeline = useRef<gsap.core.Timeline | null>(null);
   const timeoutIdRef = useRef<NodeJS.Timeout | null>(null);
 
-  useLayoutEffect(() => {
+  useGSAP(() => {
     if (!circleRef.current) return;
 
     timeline.current = gsap.timeline({ paused: true });
