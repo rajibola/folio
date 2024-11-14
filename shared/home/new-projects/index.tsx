@@ -1,18 +1,17 @@
 "use client";
 
+import { ButtonComponent } from "@/shared/button";
+import { Magnetic } from "@/shared/magnetic";
 import { useGSAP } from "@gsap/react";
+import { ArrowUpRightIcon } from "@heroicons/react/24/outline";
 import gsap, { Quart } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { useRouter } from "next/navigation";
+import { Playfair_Display } from "next/font/google";
 import { useRef, useState } from "react";
 import SplitType from "split-type";
 import { Modal } from "./modal";
 import { Project } from "./project";
-import { Magnetic } from "@/shared/magnetic";
-import { ButtonComponent } from "@/shared/button";
-import { PROJECTS_COUNT } from "@/utils/PROJECTS";
-import { ArrowUpRightIcon } from "@heroicons/react/24/outline";
-import { Playfair_Display } from "next/font/google";
+import { useRouter } from "next/navigation";
 
 const playfair = Playfair_Display({
   subsets: ["latin"],
@@ -66,8 +65,8 @@ const projects: Project[] = [
 export const NewProjects = () => {
   const containerRef = useRef<HTMLDivElement | null>(null);
   const splitFrontRef = useRef<HTMLDivElement | null>(null);
-  const router = useRouter();
   const [modal, setModal] = useState({ active: false, index: 0 });
+  const router = useRouter();
 
   useGSAP(
     () => {
@@ -143,23 +142,18 @@ export const NewProjects = () => {
               </h1>
             </div>
             <Magnetic>
-              <a
-                className="self-start"
-                rel="noopener noreferrer"
-                target="_blank"
+              <ButtonComponent
+                className="bg-accent-light w-[120px] h-[120px]"
+                style={{
+                  height: "120px",
+                  width: "120px",
+                }}
+                onClick={() => router.push(`/projects`)}
               >
-                <ButtonComponent
-                  className="bg-accent-light w-[120px] h-[120px]"
-                  style={{
-                    height: "120px",
-                    width: "120px",
-                  }}
-                >
-                  <Magnetic>
-                    <ArrowUpRightIcon className="z-10" />
-                  </Magnetic>
-                </ButtonComponent>
-              </a>
+                <Magnetic>
+                  <ArrowUpRightIcon className="z-10" />
+                </Magnetic>
+              </ButtonComponent>
             </Magnetic>
           </div>
         </div>

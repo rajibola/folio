@@ -1,11 +1,11 @@
 "use client";
 
-import { ArrowUp } from "@/assets/icons/ArrowUp";
 import { ButtonComponent } from "@/shared/button";
 import { Magnetic } from "@/shared/magnetic";
 import { PROJECTS_IMAGES } from "@/utils/PROJECTS";
 import { useGSAP } from "@gsap/react";
-import gsap, { Linear, Power3, Quart } from "gsap";
+import { GlobeAltIcon } from "@heroicons/react/24/outline";
+import gsap, { Power3, Quart } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { Inter_Tight, Playfair_Display } from "next/font/google";
 import Image from "next/image";
@@ -110,6 +110,14 @@ export const NewHero = () => {
     { scope: containerRef, dependencies: [] }
   );
 
+  const handleMailClick = () => {
+    window.open(
+      "mailto:rajibola1997@gmail.com",
+      "_blank",
+      "noopener,noreferrer"
+    );
+  };
+
   return (
     <section
       ref={containerRef}
@@ -163,22 +171,17 @@ export const NewHero = () => {
             market.
           </div>
 
-          {/* <div className="btn h-12 px-6 text-lg border flex items-center gap-2 rounded-full mt-6 tracking-wider w-fit opacity-0">
-            <div>Let&apos;s discuss</div>
-            <ArrowUp className="fill-current text-white h-3 w-3" />
-          </div>
-        </div> */}
-
           <Magnetic>
             <div className="self-start w-fit">
-              <ButtonComponent count={4} onClick={null}>
+              <ButtonComponent
+                // count={4}
+                onClick={handleMailClick}
+              >
                 <Magnetic>
-                  <p className="z-10 relative font-light">
-                    Let&apos;s discuss{" "}
-                    <div className="absolute -right-3 -top-1 opacity-50 text-[9.5px]">
-                      {4}
-                    </div>
-                  </p>
+                  <div className="inline-flex items-center gap-2 z-10">
+                    <p className="relative font-light">Let&apos;s discuss </p>
+                    <GlobeAltIcon className="w-4 h-4 text-white" />
+                  </div>
                 </Magnetic>
               </ButtonComponent>
             </div>
