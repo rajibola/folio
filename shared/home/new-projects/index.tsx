@@ -30,12 +30,12 @@ interface Project {
 }
 
 const projects: Project[] = [
-  {
-    title: "Sabi",
-    src: "https://res.cloudinary.com/dwn5whgwh/image/upload/v1684690549/portfolio/1_lhexk2.webp",
-    color: "#706D63",
-    tag: "Mobile",
-  },
+  // {
+  //   title: "Sabi",
+  //   src: "https://res.cloudinary.com/dwn5whgwh/image/upload/v1684690549/portfolio/1_lhexk2.webp",
+  //   color: "#706D63",
+  //   tag: "Mobile",
+  // },
   {
     title: "Kindred B2B Website",
     src: "https://res.cloudinary.com/dwn5whgwh/image/upload/v1690796371/portfolio/screenshot-2023-07-31-at-102726-64c78056b4649_iljqex.webp",
